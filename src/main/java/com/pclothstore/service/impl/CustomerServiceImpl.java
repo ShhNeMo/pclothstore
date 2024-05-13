@@ -28,20 +28,31 @@ public class CustomerServiceImpl implements CustomerService {
         return repository.save(customer);
     }
 
-    @Override
-    public Customer findByEmail(String email) {
-        return repository.findCustomerByEmail(email);
-    }
+//    @Override
+//    public Customer findByEmail(String email) {
+//        return repository.findCustomerByEmail(email);
+//    }
 
     @Override
     public Customer updateCustomer(Customer customer) {
         return repository.save(customer);
     }
 
+//    @Override
+//    @Transactional
+//    public Customer deleteCustomer(String email) {
+//        repository.deleteByEmail(email);
+//        return null;
+//    }
+
     @Override
-    @Transactional
-    public Customer deleteCustomer(String email) {
-        repository.deleteByEmail(email);
-        return null;
+    public Customer findCustomerById(Long id) {
+        return repository.findById(id).orElseThrow(() -> new RuntimeException("Customer not found"));
     }
+
+    @Override
+    public void deleteCustomer(Long id) {
+        repository.deleteById(id);
+    }
+
 }

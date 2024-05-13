@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.IntStream;
 
 @Repository
@@ -20,12 +21,12 @@ public class InMemoryCustomerDAO {
         return customer;
     }
 
-    public Customer findByEmail(String email) {
-        return CUSTOMERS.stream()
-                .filter(element-> element.getEmail().equals(email))
-                .findFirst()
-                .orElse(null);
-    }
+//    public Customer findByEmail(String email) {
+//        return CUSTOMERS.stream()
+//                .filter(element-> element.getEmail().equals(email))
+//                .findFirst()
+//                .orElse(null);
+//    }
 
     public Customer updateCustomer(Customer customer) {
         var customerIndex = IntStream.range(0, CUSTOMERS.size())
@@ -40,11 +41,21 @@ public class InMemoryCustomerDAO {
         return null;
     }
 
-    public Customer deleteCustomer(String email) {
-        var customer = findByEmail(email);
-        if(customer!=null){
-            CUSTOMERS.remove(customer);
-        }
-        return null;
+//    public Customer deleteCustomer(String email) {
+//        var customer = findByEmail(email);
+//        if(customer!=null){
+//            CUSTOMERS.remove(customer);
+//        }
+//        return null;
+//    }
+
+
+    public Optional<Customer> findById(Long id) {
+        return CUSTOMERS.stream()
+                .filter(customer -> customer.getId().equals(id))
+                .findFirst();
+    }
+    public void deleteById(Long id) {
+        CUSTOMERS.removeIf(customer -> customer.getId().equals(id));
     }
 }
