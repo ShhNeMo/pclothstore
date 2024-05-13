@@ -15,13 +15,6 @@ import java.util.List;
 public class CategoryController {
     private final CategoryService categoryService;
 
-    @GetMapping
-    public ResponseEntity<List<Category>> findAllCategories() {
-        List<Category> categories = categoryService.findAllCategories();
-        return ResponseEntity.ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(categories);
-    }
 
     @GetMapping("/{id}")
     public Category findCategoryById(@PathVariable Long id) {
