@@ -25,6 +25,10 @@ public class PurchasesServiceImpl implements PurchasesService {
     }
 
     @Override
+    public List<Purchases> placePurchases(List<Purchases> purchases) {
+        return purchasesRepository.saveAll(purchases);
+    }
+    @Override
     public void cancelPurchase(Long id) {
         purchasesRepository.deleteById(id);
     }

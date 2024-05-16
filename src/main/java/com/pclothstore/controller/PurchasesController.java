@@ -24,6 +24,11 @@ public class PurchasesController {
         return purchasesService.placePurchase(purchase);
     }
 
+    @PostMapping("/many")
+    public List<Purchases> placePurchases(@RequestBody List<Purchases> purchases) {
+        return purchasesService.placePurchases(purchases);
+    }
+
     @DeleteMapping("/{id}")
     public void cancelPurchase(@PathVariable Long id) {
         purchasesService.cancelPurchase(id);
