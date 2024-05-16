@@ -45,13 +45,9 @@ public class CustomerController {
 //        return customerService.findByEmail(email);
 //    }
 
-    @PutMapping("")
-    public Customer updateCustomer(@RequestBody Customer customer){
+    @PutMapping("/{id}")
+    public Customer updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
+        customer.setId(id);
         return customerService.updateCustomer(customer);
     }
-//
-//    @DeleteMapping("/{email}")
-//    public void deleteCustomer(@PathVariable String email){
-//        customerService.deleteCustomer(email);
-//    }
 }
