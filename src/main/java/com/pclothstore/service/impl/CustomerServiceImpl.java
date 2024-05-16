@@ -34,8 +34,15 @@ public class CustomerServiceImpl implements CustomerService {
 //    }
 
     @Override
-    public Customer updateCustomer(Customer customer) {
-        return repository.save(customer);
+    public Customer updateCustomer(Long id, Customer customer) {
+        Customer existingCustomer = findCustomerById(id);
+
+        existingCustomer.setFirstName(customer.getFirstName());
+        existingCustomer.setLastName(customer.getLastName());
+        existingCustomer.setEmail(customer.getEmail());
+        existingCustomer.setPassword(customer.getPassword());
+
+        return repository.save(existingCustomer);
     }
 
 //    @Override

@@ -12,8 +12,7 @@ public interface CustomerService {
 
 //    Customer findByEmail(String email);
 
-    Customer updateCustomer(Customer customer);
-
+    Customer updateCustomer(Long id, Customer customer);
 //    Customer deleteCustomer(String email);
 
     Customer findCustomerById(Long id);
