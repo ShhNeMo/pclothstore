@@ -38,4 +38,9 @@ public class PurchasesServiceImpl implements PurchasesService {
     public List<Purchases> getPurchasesByUserId(Long userId) {
         return purchasesRepository.findByUserId(userId);
     }
+
+    @Override
+    public List<Purchases> getPurchasesForUser(Long userId) {
+        return null;
+    }
 }

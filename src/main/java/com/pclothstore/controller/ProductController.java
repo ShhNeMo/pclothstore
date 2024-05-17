@@ -26,6 +26,7 @@ public class ProductController {
 
     @PostMapping
     public Product createProduct(@RequestBody Product product) {
+        System.out.println("111111111111");
         return productService.createProduct(product);
     }
 
@@ -39,4 +40,5 @@ public class ProductController {
         productService.deleteProduct(id);
         return ResponseEntity.ok().build();
     }
+
 }

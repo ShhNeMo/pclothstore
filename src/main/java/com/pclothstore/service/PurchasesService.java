@@ -1,5 +1,6 @@
 package com.pclothstore.service;
 
+import com.pclothstore.model.Product;
 import com.pclothstore.model.Purchases;
 
 import java.util.List;
@@ -10,4 +11,6 @@ public interface PurchasesService {
     List<Purchases> placePurchases(List<Purchases> purchases);
     void cancelPurchase(Long id);
     List<Purchases> getPurchasesByUserId(Long userId);
+
+    List<Purchases> getPurchasesForUser(Long userId);
 }

@@ -1,5 +1,6 @@
 package com.pclothstore.controller;
 
+import com.pclothstore.model.Product;
 import com.pclothstore.model.Purchases;
 import com.pclothstore.service.PurchasesService;
 import lombok.AllArgsConstructor;
@@ -16,7 +17,13 @@ public class PurchasesController {
 
     @GetMapping("/user/{userId}")
     public List<Purchases> getPurchasesByUserId(@PathVariable Long userId) {
-        return purchasesService.getPurchasesByUserId(userId);
+        List<Purchases> userPurchases = purchasesService.getPurchasesForUser(userId);
+//        for (Purchases purchase : userPurchases) {
+//            Product purchasedProduct = purchase.getProduct();
+//            System.out.println("Product Name: " + purchasedProduct.getName());
+//            // ... other product details
+//        }
+        return userPurchases;
     }
 
     @GetMapping
@@ -38,4 +45,5 @@ public class PurchasesController {
     public void cancelPurchase(@PathVariable Long id) {
         purchasesService.cancelPurchase(id);
     }
+
 }
