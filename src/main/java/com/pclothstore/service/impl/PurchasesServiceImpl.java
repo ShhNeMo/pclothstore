@@ -28,8 +28,14 @@ public class PurchasesServiceImpl implements PurchasesService {
     public List<Purchases> placePurchases(List<Purchases> purchases) {
         return purchasesRepository.saveAll(purchases);
     }
+
     @Override
     public void cancelPurchase(Long id) {
         purchasesRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Purchases> getPurchasesByUserId(Long userId) {
+        return purchasesRepository.findByUserId(userId);
     }
 }

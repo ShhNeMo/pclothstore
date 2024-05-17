@@ -8,6 +8,6 @@ public interface PurchasesService {
     List<Purchases> getAllPurchases();
     Purchases placePurchase(Purchases purchase);
     List<Purchases> placePurchases(List<Purchases> purchases);
-
     void cancelPurchase(Long id);
+    List<Purchases> getPurchasesByUserId(Long userId);
 }

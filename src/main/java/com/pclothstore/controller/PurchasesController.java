@@ -2,17 +2,22 @@ package com.pclothstore.controller;
 
 import com.pclothstore.model.Purchases;
 import com.pclothstore.service.PurchasesService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/api/purchases")
 public class PurchasesController {
 
-    @Autowired
-    private PurchasesService purchasesService;
+    private final PurchasesService purchasesService;
+
+    @GetMapping("/user/{userId}")
+    public List<Purchases> getPurchasesByUserId(@PathVariable Long userId) {
+        return purchasesService.getPurchasesByUserId(userId);
+    }
 
     @GetMapping
     public List<Purchases> getAllPurchases() {
@@ -24,7 +29,7 @@ public class PurchasesController {
         return purchasesService.placePurchase(purchase);
     }
 
-    @PostMapping("/many")
+    @PostMapping("/list")
     public List<Purchases> placePurchases(@RequestBody List<Purchases> purchases) {
         return purchasesService.placePurchases(purchases);
     }

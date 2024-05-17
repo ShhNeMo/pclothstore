@@ -2,21 +2,21 @@ package com.pclothstore.controller;
 
 import com.pclothstore.model.Cart;
 import com.pclothstore.service.CartService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/api/cart")
 public class CartController {
 
-    @Autowired
-    private CartService cartService;
+    private final CartService cartService;
 
-    @GetMapping
-    public List<Cart> getAllCartItems() {
-        return cartService.getAllCartItems();
+    @GetMapping("/user/{userId}")
+    public List<Cart> getCartItemsByUserId(@PathVariable Long userId) {
+        return cartService.getCartItemsByUserId(userId);
     }
 
     @PostMapping
@@ -28,4 +28,10 @@ public class CartController {
     public void removeFromCart(@PathVariable Long id) {
         cartService.removeFromCart(id);
     }
+
+    @GetMapping("/all")
+    public List<Cart> getAllCartItems() {
+        return cartService.getAllCartItems();
+    }
+
 }
