@@ -1,6 +1,7 @@
 package com.pclothstore.controller;
 
 import com.pclothstore.model.Cart;
+import com.pclothstore.model.Product;
 import com.pclothstore.service.CartService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,11 @@ public class CartController {
     @GetMapping("/all")
     public List<Cart> getAllCartItems() {
         return cartService.getAllCartItems();
+    }
+
+    @DeleteMapping("/user/{userId}/product/{productId}")
+    public void removeFromCartByProductId(@PathVariable Long userId, @PathVariable Long productId) {
+        cartService.removeFromCartByProductId(userId, productId);
     }
 
 }

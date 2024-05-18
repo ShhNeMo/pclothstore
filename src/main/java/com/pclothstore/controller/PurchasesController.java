@@ -17,13 +17,7 @@ public class PurchasesController {
 
     @GetMapping("/user/{userId}")
     public List<Purchases> getPurchasesByUserId(@PathVariable Long userId) {
-        List<Purchases> userPurchases = purchasesService.getPurchasesForUser(userId);
-//        for (Purchases purchase : userPurchases) {
-//            Product purchasedProduct = purchase.getProduct();
-//            System.out.println("Product Name: " + purchasedProduct.getName());
-//            // ... other product details
-//        }
-        return userPurchases;
+        return purchasesService.getPurchasesByUserId(userId);
     }
 
     @GetMapping

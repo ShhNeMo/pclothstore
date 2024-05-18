@@ -12,5 +12,4 @@ public interface PurchasesService {
     void cancelPurchase(Long id);
     List<Purchases> getPurchasesByUserId(Long userId);
 
-    List<Purchases> getPurchasesForUser(Long userId);
 }
