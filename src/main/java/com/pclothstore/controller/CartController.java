@@ -40,4 +40,10 @@ public class CartController {
         cartService.removeFromCartByProductId(userId, productId);
     }
 
+    @DeleteMapping("/user/{userId}/all")
+    public void removeAllFromCartByUserId(@PathVariable Long userId) {
+        cartService.removeAllFromCartByUserId(userId);
+    }
+
+
 }
