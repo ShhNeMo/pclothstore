@@ -1,5 +1,6 @@
 package com.pclothstore.controller;
 
+import com.pclothstore.model.Product;
 import com.pclothstore.model.Purchases;
 import com.pclothstore.service.PurchasesService;
 import lombok.AllArgsConstructor;
@@ -38,4 +39,5 @@ public class PurchasesController {
     public void cancelPurchase(@PathVariable Long id) {
         purchasesService.cancelPurchase(id);
     }
+
 }

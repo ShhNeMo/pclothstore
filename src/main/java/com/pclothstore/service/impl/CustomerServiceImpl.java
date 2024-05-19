@@ -6,6 +6,7 @@ import com.pclothstore.service.CustomerService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Primary;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Primary
 public class CustomerServiceImpl implements CustomerService {
+    private final PasswordEncoder passwordEncoder;
 
     private final CustomerRepository repository;
 
@@ -40,8 +42,9 @@ public class CustomerServiceImpl implements CustomerService {
         existingCustomer.setFirstName(customer.getFirstName());
         existingCustomer.setLastName(customer.getLastName());
         existingCustomer.setEmail(customer.getEmail());
-        existingCustomer.setPassword(customer.getPassword());
-
+        if (!customer.getPassword().equals(existingCustomer.getPassword())) {
+            existingCustomer.setPassword(passwordEncoder.encode(customer.getPassword()));
+        }
         return repository.save(existingCustomer);
     }
 

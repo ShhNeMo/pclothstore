@@ -9,4 +9,5 @@ public interface ProductService {
     Product createProduct(Product product);
     Product updateProduct(Product product);
     void deleteProduct(Long id);
+//    List<ProductDTO> getFullPurchasesByUserId(Long userId);
 }

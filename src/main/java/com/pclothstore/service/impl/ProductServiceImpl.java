@@ -25,6 +25,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product createProduct(Product product) {
+        System.out.println("22222222222222");
         return productRepository.save(product);
     }
 
@@ -40,4 +41,11 @@ public class ProductServiceImpl implements ProductService {
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
+
+
+
+//    @Override
+//    public List<ProductDTO> getFullPurchasesByUserId(Long userId) {
+//        return productRepository.findProductsByUserId(userId);
+//    }
 }

@@ -1,5 +1,6 @@
 package com.pclothstore.service.impl;
 
+import com.pclothstore.model.Product;
 import com.pclothstore.model.Purchases;
 import com.pclothstore.repository.PurchasesRepository;
 import com.pclothstore.service.PurchasesService;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PurchasesServiceImpl implements PurchasesService {
@@ -38,4 +40,5 @@ public class PurchasesServiceImpl implements PurchasesService {
     public List<Purchases> getPurchasesByUserId(Long userId) {
         return purchasesRepository.findByUserId(userId);
     }
+
 }
